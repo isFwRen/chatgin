@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
-
 //go:generate go mod tidy
 //go:generate swag init
 
+import (
+	"chatgin/initRouter"
+)
+
 func main() {
-	fmt.Println("-----")
+	router := initRouter.Routers()
+	router.Run()
 }
