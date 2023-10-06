@@ -1,0 +1,76 @@
+definitions:
+  model.UserBasic:
+    properties:
+      clientIp:
+        description: 客户端ip
+        type: string
+      clientPort:
+        description: 客户端接口
+        type: string
+      createdAt:
+        type: string
+      deviceInfo:
+        description: 设备信息
+        type: string
+      email:
+        description: 用户邮箱
+        type: string
+      heartbeatTime:
+        description: 心跳时间
+        type: string
+      identity:
+        description: 唯一标识
+        type: string
+      isLogOut:
+        description: 登录状态
+        type: integer
+      loginOutTime:
+        description: 心跳时间
+        type: string
+      loginTime:
+        description: 登录时间
+        type: string
+      name:
+        description: 用户名字
+        type: string
+      password:
+        description: 用户密码
+        type: string
+      phone:
+        description: 用户电话
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /user-basic/add:
+    post:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: 用户信息参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserBasic'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 添加成功
+          schema:
+            $ref: '#/definitions/model.UserBasic'
+      summary: Show an account
+      tags:
+      - accounts
+swagger: "2.0"

@@ -8,6 +8,6 @@ import (
 func SysBaseUser(Router *gin.RouterGroup) {
 	SysBasicUser := Router.Group("/user-basic")
 	{
-		SysBasicUser.GET("/add", api.UserBasicAdd)
+		SysBasicUser.POST("/add", api.UserBasicAdd)
 	}
 }
