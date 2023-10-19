@@ -22,9 +22,69 @@
                     "application/json"
                 ],
                 "tags": [
-                    "accounts"
+                    "user-basic(用户信息)"
                 ],
-                "summary": "Show an account",
+                "summary": "用户基础信息-用户添加",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户名",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户密码",
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "确认密码",
+                        "name": "rePassword",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "手机号",
+                        "name": "phone",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "邮箱",
+                        "name": "email",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user-basic/delete": {
+            "delete": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user-basic(用户信息)"
+                ],
+                "summary": "用户基础信息-用户删除",
                 "parameters": [
                     {
                         "description": "用户信息参数",
@@ -32,15 +92,102 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/model.UserBasic"
+                            "$ref": "#/definitions/request.ReqArr"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "添加成功",
+                        "description": "code\",\"message\"}",
                         "schema": {
-                            "$ref": "#/definitions/model.UserBasic"
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user-basic/query": {
+            "post": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user-basic(用户信息)"
+                ],
+                "summary": "用户基础信息-用户查询",
+                "parameters": [
+                    {
+                        "description": "用户信息参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.ReqArr"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user-basic/update": {
+            "put": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user-basic(用户信息)"
+                ],
+                "summary": "用户基础信息-用户修改",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户名字",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户电话",
+                        "name": "phone",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户邮箱",
+                        "name": "email",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\"}",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -48,62 +195,14 @@
         }
     },
     "definitions": {
-        "model.UserBasic": {
+        "request.ReqArr": {
             "type": "object",
             "properties": {
-                "clientIp": {
-                    "description": "客户端ip",
-                    "type": "string"
-                },
-                "clientPort": {
-                    "description": "客户端接口",
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "deviceInfo": {
-                    "description": "设备信息",
-                    "type": "string"
-                },
-                "email": {
-                    "description": "用户邮箱",
-                    "type": "string"
-                },
-                "heartbeatTime": {
-                    "description": "心跳时间",
-                    "type": "string"
-                },
-                "identity": {
-                    "description": "唯一标识",
-                    "type": "string"
-                },
-                "isLogOut": {
-                    "description": "登录状态",
-                    "type": "integer"
-                },
-                "loginOutTime": {
-                    "description": "心跳时间",
-                    "type": "string"
-                },
-                "loginTime": {
-                    "description": "登录时间",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "用户名字",
-                    "type": "string"
-                },
-                "password": {
-                    "description": "用户密码",
-                    "type": "string"
-                },
-                "phone": {
-                    "description": "用户电话",
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         }
