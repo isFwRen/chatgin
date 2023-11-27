@@ -1,46 +1,10 @@
 definitions:
-  model.UserBasic:
+  request.ReqArr:
     properties:
-      clientIp:
-        description: 客户端ip
-        type: string
-      clientPort:
-        description: 客户端接口
-        type: string
-      createdAt:
-        type: string
-      deviceInfo:
-        description: 设备信息
-        type: string
-      email:
-        description: 用户邮箱
-        type: string
-      heartbeatTime:
-        description: 心跳时间
-        type: string
-      identity:
-        description: 唯一标识
-        type: string
-      isLogOut:
-        description: 登录状态
-        type: integer
-      loginOutTime:
-        description: 心跳时间
-        type: string
-      loginTime:
-        description: 登录时间
-        type: string
-      name:
-        description: 用户名字
-        type: string
-      password:
-        description: 用户密码
-        type: string
-      phone:
-        description: 用户电话
-        type: string
-      updatedAt:
-        type: string
+      ids:
+        items:
+          type: integer
+        type: array
     type: object
 info:
   contact:
@@ -57,20 +21,119 @@ paths:
       - application/json
       description: get string by ID
       parameters:
+      - description: 用户名
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 用户密码
+        in: query
+        name: password
+        required: true
+        type: string
+      - description: 确认密码
+        in: query
+        name: rePassword
+        required: true
+        type: string
+      - description: 手机号
+        in: query
+        name: phone
+        required: true
+        type: string
+      - description: 邮箱
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 用户基础信息-用户添加
+      tags:
+      - user-basic(用户信息)
+  /user-basic/delete:
+    delete:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
       - description: 用户信息参数
         in: body
         name: data
         required: true
         schema:
-          $ref: '#/definitions/model.UserBasic'
+          $ref: '#/definitions/request.ReqArr'
       produces:
       - application/json
       responses:
         "200":
-          description: 添加成功
+          description: code","message"}
           schema:
-            $ref: '#/definitions/model.UserBasic'
-      summary: Show an account
+            type: string
+      summary: 用户基础信息-用户删除
       tags:
-      - accounts
+      - user-basic(用户信息)
+  /user-basic/query:
+    post:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: 用户信息参数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.ReqArr'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 用户基础信息-用户查询
+      tags:
+      - user-basic(用户信息)
+  /user-basic/update:
+    put:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: 用户id
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: 用户名字
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 用户电话
+        in: query
+        name: phone
+        required: true
+        type: string
+      - description: 用户邮箱
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 用户基础信息-用户修改
+      tags:
+      - user-basic(用户信息)
 swagger: "2.0"
